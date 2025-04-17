@@ -1,0 +1,30 @@
+services:
+  # Servicio web: frontend y backend juntos
+  - type: web
+    name: migraguia
+    env: node
+    plan: starter
+    buildCommand: npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: migraguia-db
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+
+  # Base de datos PostgreSQL 
+databases:
+  - name: migraguia-db
+    plan: starter
+    databaseName: migraguia
+    user: migraguia_user
+    ipAllowList: [] # Acceso sólo desde servicios de Render
+
+# Variables adicionales necesarias:
+# - SESSION_SECRET: para firmar las cookies de sesión (generado automáticamente)
+# - PGUSER, PGHOST, PGPASSWORD, PGDATABASE, PGPORT: configuradas automáticamente por Render desde migraguia-db
