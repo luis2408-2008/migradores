@@ -49,10 +49,34 @@ export default function CountriesSection({ limit = 3 }: { limit?: number }) {
       flagUrl: "https://flagicons.lipis.dev/flags/4x3/cl.svg",
       imageUrl: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       description: "Información sobre visas de residencia, sistema de salud, educación y programas de apoyo a migrantes."
+    },
+    {
+      id: 4,
+      name: "México",
+      flagUrl: "https://flagicons.lipis.dev/flags/4x3/mx.svg",
+      imageUrl: "https://images.unsplash.com/photo-1547995886-6dc09384c6e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Guía sobre trámites migratorios, programas de integración, opciones de empleo y acceso a servicios públicos."
+    },
+    {
+      id: 5,
+      name: "Argentina",
+      flagUrl: "https://flagicons.lipis.dev/flags/4x3/ar.svg",
+      imageUrl: "https://images.unsplash.com/photo-1589909202802-8f4aadce1849?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Información sobre el proceso de residencia, convalidación de estudios, sistema de salud y derechos laborales."
+    },
+    {
+      id: 6,
+      name: "Estados Unidos",
+      flagUrl: "https://flagicons.lipis.dev/flags/4x3/us.svg",
+      imageUrl: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      description: "Requisitos de visas, procesos de asilo político, recursos para migrantes y comunidades de apoyo."
     }
   ];
 
-  const countriesToDisplay = displayedCountries.length > 0 ? displayedCountries : mockCountries;
+  // Usamos los datos de la API si están disponibles, sino los datos de muestra
+  const availableCountries = displayedCountries.length > 0 ? displayedCountries : mockCountries;
+  // Limitamos a mostrar solo la cantidad especificada por el parámetro limit
+  const countriesToDisplay = availableCountries.slice(0, limit);
   
   return (
     <section id="paises" className="py-16 px-4 bg-white dark:bg-neutral-900">
@@ -81,11 +105,18 @@ export default function CountriesSection({ limit = 3 }: { limit?: number }) {
             >
               <img 
                 src={country.imageUrl} 
-                alt={`Bandera y paisaje de ${country.name}`} 
+                alt={`Paisaje icónico de ${country.name}`} 
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="font-display font-semibold text-xl mb-2 text-neutral-900 dark:text-white">{country.name}</h3>
+                <div className="flex items-center gap-3 mb-2">
+                  <img 
+                    src={country.flagUrl} 
+                    alt={`Bandera de ${country.name}`} 
+                    className="w-8 h-6 object-cover rounded-sm shadow-sm"
+                  />
+                  <h3 className="font-display font-semibold text-xl text-neutral-900 dark:text-white">{country.name}</h3>
+                </div>
                 <p className="text-neutral-600 dark:text-neutral-400 mb-4">
                   {country.description}
                 </p>

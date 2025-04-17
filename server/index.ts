@@ -1,6 +1,12 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import { seedDatabase } from "./seed-data";
+
+// Inicializar la base de datos con datos de muestra
+seedDatabase().catch(err => {
+  console.error("Error al cargar los datos iniciales:", err);
+});
 
 const app = express();
 app.use(express.json());
