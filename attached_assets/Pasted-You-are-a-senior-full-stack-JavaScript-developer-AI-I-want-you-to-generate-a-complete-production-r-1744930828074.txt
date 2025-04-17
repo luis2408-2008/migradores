@@ -1,0 +1,68 @@
+You are a senior full-stack JavaScript developer AI. I want you to generate a complete, production-ready, fully functional web application that helps migrants from around the world by providing critical and updated information about:
+
+- Legal procedures
+- Work opportunities
+- Health and medical services
+- Education
+- Housing
+- Human rights
+- Emergency contacts and social support
+
+The app must be 100% in *Spanish*. Every label, button, error message, content, and interface text must be in Spanish.
+
+### Frontend:
+
+Use a modern JavaScript stack with:
+
+- Vite + React 18
+- Tailwind CSS (latest version)
+- DaisyUI or Shadcn/UI for styled components
+- Framer Motion for beautiful and smooth animations
+- Animate.css + AOS (Animate on Scroll) + GSAP for scroll and reveal animations
+- React Hook Form + Zod for form validation
+- Lucide React or Font Awesome for icons
+- Dark mode support
+- Fully responsive layout (mobile-first)
+
+The UI must be elegant, modern, minimalist, and inspiring — designed with purpose, not just beauty. Use animations tastefully and with UX in mind.
+
+### Backend:
+
+Use a scalable Node.js backend with:
+
+- Node.js + Express.js
+- PostgreSQL as the database (persistent, NOT in-memory)
+- Drizzle ORM or Prisma ORM
+- User authentication using Passport.js (username, email, encrypted password)
+- bcrypt for password hashing
+- express-session with connect-pg-simple for session management
+- API routes for login, register, logout, user data, and posts
+- Environment variables managed with dotenv
+- Validation, error handling, and security (helmet, cors, rate limiting if needed)
+
+### Core Features:
+
+- User registration with full name, username, email, and password
+- Login/logout with sessions
+- Users can write comments, questions, or share experiences
+- Forum or discussion board (optional)
+- Information categorized by country
+- Admin panel or dashboard (optional)
+- Animated homepage with mission statement
+- 404 and error pages in Spanish
+- Footer and navbar with links, social media, and contact
+
+### Database:
+
+- PostgreSQL database must be fully connected and persistent
+- Must work in production (Render.com)
+- Include the ability to seed the database with initial Spanish-language data for different countries (e.g. asylum in Colombia, jobs in Spain, healthcare in Chile)
+
+### Deployment:
+
+- Provide a ready-to-deploy render.yaml file
+- Include a .env example file with environment variables
+- Include build scripts and deployment instructions
+- Must retain all data (users, comments, etc.) between deploys
+
+This app must be 100% in Spanish, designed to be beautiful, accessible, mobile-friendly, and emotionally impactful. It should feel safe and empowering for migrants. The platform must be clean, fast, useful, and ready to be shared with the world.
