@@ -1,5 +1,15 @@
 import { QueryClient, QueryFunction } from "@tanstack/react-query";
 
+// Determinar la base URL de la API dependiendo del entorno
+const getAPIBaseUrl = () => {
+  if (import.meta.env.PROD) {
+    return 'https://migradores.onrender.com';
+  }
+  return '';
+};
+
+const API_BASE_URL = getAPIBaseUrl();
+
 async function throwIfResNotOk(res: Response) {
   if (!res.ok) {
     const text = (await res.text()) || res.statusText;
@@ -12,7 +22,12 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
-  const res = await fetch(url, {
+  // Agregar el prefijo de API_BASE_URL solo si estamos en producción y la URL no incluye http
+  const fullUrl = (API_BASE_URL && !url.includes('://')) 
+    ? `${API_BASE_URL}${url}` 
+    : url;
+    
+  const res = await fetch(fullUrl, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
     body: data ? JSON.stringify(data) : undefined,
@@ -29,7 +44,13 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey[0] as string, {
+    const url = queryKey[0] as string;
+    // Agregar el prefijo de API_BASE_URL solo si estamos en producción y la URL no incluye http
+    const fullUrl = (API_BASE_URL && !url.includes('://')) 
+      ? `${API_BASE_URL}${url}` 
+      : url;
+
+    const res = await fetch(fullUrl, {
       credentials: "include",
     });
 
