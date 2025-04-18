@@ -8,6 +8,7 @@ import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/home-page";
 import AuthPage from "@/pages/auth-page";
 import CountriesPage from "@/pages/countries-page";
+import CountriesSearchPage from "@/pages/countries-search-page";
 import CountryDetailPage from "@/pages/country-detail-page";
 import ResourcesPage from "@/pages/resources-page";
 import CommunityPage from "@/pages/community-page";
@@ -21,6 +22,7 @@ function Router() {
       <Route path="/" component={HomePage} />
       <Route path="/auth" component={AuthPage} />
       <Route path="/paises" component={CountriesPage} />
+      <Route path="/paises/buscar" component={CountriesSearchPage} />
       <Route path="/paises/:id" component={CountryDetailPage} />
       <Route path="/recursos" component={ResourcesPage} />
       <ProtectedRoute path="/comunidad" component={CommunityPage} />
