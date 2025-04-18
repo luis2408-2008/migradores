@@ -7,15 +7,8 @@ interface ResourceDetailModalProps {
 }
 
 export default function ResourceDetailModal({ resource }: ResourceDetailModalProps) {
-  // Extrae un resumen del texto sin etiquetas HTML
-  const getTextSummary = (htmlContent: string, length = 200) => {
-    // Eliminar etiquetas HTML
-    const plainText = htmlContent.replace(/<[^>]*>/g, '');
-    // Obtener un extracto del texto
-    return plainText.length > length 
-      ? plainText.slice(0, length) + '...' 
-      : plainText;
-  };
+  // Este componente muestra un modal con el contenido HTML del recurso
+  // El texto de resumen se genera en la vista previa de la tarjeta
 
   return (
     <Dialog>
@@ -28,7 +21,7 @@ export default function ResourceDetailModal({ resource }: ResourceDetailModalPro
         <DialogHeader>
           <DialogTitle className="text-xl font-semibold">{resource.title}</DialogTitle>
         </DialogHeader>
-        <div className="mt-4 prose dark:prose-invert prose-headings:font-display prose-headings:font-semibold prose-a:text-primary max-w-none">
+        <div className="mt-4 prose dark:prose-invert prose-headings:font-display prose-headings:font-semibold prose-a:text-primary prose-ul:pl-6 prose-ol:pl-6 prose-li:marker:text-primary dark:prose-li:marker:text-primary-300 max-w-none">
           <div dangerouslySetInnerHTML={{ __html: resource.content }} />
         </div>
       </DialogContent>

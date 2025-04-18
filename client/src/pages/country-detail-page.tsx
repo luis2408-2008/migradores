@@ -25,7 +25,7 @@ import { motion } from "framer-motion";
 
 export default function CountryDetailPage() {
   const { id } = useParams();
-  const countryId = parseInt(id);
+  const countryId = parseInt(id || "0");
   const [activeTab, setActiveTab] = useState("legal");
 
   // Consulta de datos del país
@@ -261,7 +261,7 @@ export default function CountryDetailPage() {
                             </CardHeader>
                             <CardContent>
                               <p className="text-neutral-700 dark:text-neutral-300">
-                                {resource.content.slice(0, 200)}...
+                                {resource.content.replace(/<[^>]*>/g, "").slice(0, 200)}...
                               </p>
                               <Button variant="link" className="p-0 mt-2 h-auto">
                                 Leer más
@@ -294,7 +294,7 @@ export default function CountryDetailPage() {
                             </CardHeader>
                             <CardContent>
                               <p className="text-neutral-700 dark:text-neutral-300">
-                                {resource.content.slice(0, 200)}...
+                                {resource.content.replace(/<[^>]*>/g, "").slice(0, 200)}...
                               </p>
                               <Button variant="link" className="p-0 mt-2 h-auto">
                                 Leer más
@@ -327,7 +327,7 @@ export default function CountryDetailPage() {
                             </CardHeader>
                             <CardContent>
                               <p className="text-neutral-700 dark:text-neutral-300">
-                                {resource.content.slice(0, 200)}...
+                                {resource.content.replace(/<[^>]*>/g, "").slice(0, 200)}...
                               </p>
                               <Button variant="link" className="p-0 mt-2 h-auto">
                                 Leer más
@@ -360,7 +360,7 @@ export default function CountryDetailPage() {
                             </CardHeader>
                             <CardContent>
                               <p className="text-neutral-700 dark:text-neutral-300">
-                                {resource.content.slice(0, 200)}...
+                                {resource.content.replace(/<[^>]*>/g, "").slice(0, 200)}...
                               </p>
                               <Button variant="link" className="p-0 mt-2 h-auto">
                                 Leer más
@@ -393,7 +393,7 @@ export default function CountryDetailPage() {
                             </CardHeader>
                             <CardContent>
                               <p className="text-neutral-700 dark:text-neutral-300">
-                                {resource.content.slice(0, 200)}...
+                                {resource.content.replace(/<[^>]*>/g, "").slice(0, 200)}...
                               </p>
                               <Button variant="link" className="p-0 mt-2 h-auto">
                                 Leer más
