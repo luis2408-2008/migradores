@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Country, Resource } from "@shared/schema";
+import ResourceDetailModal from "@/components/resource-detail-modal";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button";
