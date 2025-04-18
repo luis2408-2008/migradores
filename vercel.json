@@ -1,9 +1,22 @@
 {
   "version": 2,
-  "buildCommand": "npm install && npm run build",
+  "framework": "vite",
+  "buildCommand": "./vercel-build.sh",
   "outputDirectory": "dist",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api" },
-    { "source": "/(.*)", "destination": "/" }
-  ]
+  "installCommand": "npm install",
+  "regions": ["cdg1"],
+  "functions": {
+    "api/index.js": {
+      "memory": 1024,
+      "maxDuration": 10
+    }
+  },
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api" },
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
